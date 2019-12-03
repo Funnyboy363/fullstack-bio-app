@@ -2,9 +2,9 @@
   "name": "deved-restapi",
   "version": "1.0.0",
   "description": "A restful api with node.js express and MongoDB",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node app.js"
   },
   "author": "Grant Shoop",
   "license": "ISC",
