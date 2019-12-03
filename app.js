@@ -73,9 +73,9 @@ process.env.DB_CONNECTION,
 );
 
 //How to boot up server
-const PORT = 8000;
-app.listen(PORT, function() {
-  console.log("Server is running on Port: " + PORT);
-});
+// const PORT = 8000;
+// app.listen(PORT, function() {
+//   console.log("Server is running on Port: " + PORT);
+// });
 
 
