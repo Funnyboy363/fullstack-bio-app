@@ -4,7 +4,7 @@
   "description": "A restful api with node.js express and MongoDB",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "npm run build"
   },
   "author": "Grant Shoop",
   "license": "ISC",

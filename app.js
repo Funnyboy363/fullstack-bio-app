@@ -20,7 +20,7 @@ const postsRoute = require('./routes/posts');
 app.use('/posts', postsRoute);  // can add multiple routes or posts
 
 //Routes
-app.get('/home', (req, res) => {
+app.get('/', (req, res) => {
   res.sendFile(__dirname + "/index.html");
 });  //When using get send with the / route that basically just sends a message when you go to that
 
