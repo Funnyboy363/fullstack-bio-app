@@ -1,14 +1,11 @@
 var http = require("http"); 
 var url = require("url"); 
-
-// Use the environment variable or use a given port
-const PORT = process.env.PORT || 8080;
-// Create a server, uses `handleRequest` which is function that takes
-// care of providing requested data
-const server = http.createServer(handleRequest);
-// Start the server
-server.listen(PORT, () => {
-  console.log('Server listening on: http://localhost:%s', PORT);
+const express = require('express');
+const app = express();
+const path = require('path');
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
-
- exports.start = start
+app.listen(process.env.PORT || 4000, function(){
+    console.log('Your node js server is running');
+});
