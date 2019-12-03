@@ -1,3 +1,3 @@
 <process type>: <command>
 
-web: node dist/server.js
+web: node dist/app.js
