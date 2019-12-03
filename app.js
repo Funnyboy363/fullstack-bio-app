@@ -72,10 +72,10 @@ process.env.DB_CONNECTION,
   () => console.log('connected to DB!')
 );
 
-//How to boot up server
-// const PORT = 8000;
-// app.listen(PORT, function() {
-//   console.log("Server is running on Port: " + PORT);
-// });
+// How to boot up server
+const PORT = 8000;
+app.listen(PORT, function() {
+  console.log("Server is running on Port: " + PORT);
+});
 
 
