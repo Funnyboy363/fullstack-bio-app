@@ -1,3 +1,3 @@
 <process type>: <command>
 
-web: node app.js
+web: npm start
