@@ -1,17 +1,28 @@
 <!DOCTYPE html>
 <html>
  <head>
- <title>submitted successfully</title>
+ <title>JSON Text</title>
  </head>
- <p id="demo"></p>
+ 
 
  </body>
-<script>
 
-var myJSON = JSON.stringify(posts);
-document.getElementById("demo").innerHTML = myJSON;
+    
+    <script>
+    //Gets back all the posts
+app.get('/nextpage', async (req, res) => {
+    try{
+     const posts = await User.find();
+    //  res.json(posts);
+     res.send(`Here are the names ${posts}`);
+    } catch (err) {
+     res.json({ message: err });
+     res.send(`error try again`);
+    }
+  }); 
+    </script>
 
-</script>
+
 
 
 </html>

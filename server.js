@@ -21,6 +21,9 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+app.get('/nextpage', function(req, res) {
+  res.sendFile(path.join(__dirname, 'nextpage.html'));
+});
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -60,9 +63,13 @@ app.post('/addname', async (req, res) => {
 app.get('/api/users', async (req, res) => {
     try{
      const posts = await User.find();
-     res.json(posts);
+    //  res.json(posts);
+     res.send(` <h1 style="text-align: center;">Saved API DATA</h1> Array of Posts <br><br> ${posts}
+     <br><br><center><a href="/">Back to Form</a></center>
+     `);
     } catch (err) {
      res.json({ message: err });
+     res.send(`error try again`);
     }
   }); 
   
