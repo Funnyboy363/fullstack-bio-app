@@ -17,11 +17,12 @@ const postsRoute = require('./routes/posts');
 app.use('/posts', postsRoute);  // can add multiple routes or posts
 
 
-
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 //Routes
 // app.get('/', (req, res) => {
