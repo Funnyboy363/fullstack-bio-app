@@ -55,16 +55,17 @@ app.post('/addname', async (req, res) => {
 
 
 
-
 //Gets back all the posts
 app.get('/api/users', async (req, res) => {
-  try{
-   const posts = await User.find();
-   res.json(posts);
-  } catch (err) {
-   res.json({ message: err });
-  }
-}); 
+    try{
+     const posts = await User.find();
+     res.json(posts);
+    } catch (err) {
+     res.json({ message: err });
+    }
+  }); 
+  
+
 
 
 
@@ -85,6 +86,6 @@ process.env.DB_CONNECTION,
 
 
 
-app.listen(process.env.PORT || 4000, function(){
+app.listen(process.env.PORT || 8000, function(){
     console.log('Your node js server is running');
 });
