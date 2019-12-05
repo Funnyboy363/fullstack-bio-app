@@ -41,7 +41,7 @@ var nameSchema = new mongoose.Schema({
  var User = mongoose.model("User", nameSchema);
 
 // // Submits a post
-app.post('/addname', async (req, res) => {
+app.post('/api/users', async (req, res) => {
   const post = new User({
      firstName: req.body.firstName,
       lastName: req.body.lastName,
@@ -49,8 +49,26 @@ app.post('/addname', async (req, res) => {
   });
  try {
      const savedPost = await post.save();
-     res.send("item saved to database. Check out the <a href='/api/users'>JSON FILE</a> "+ '<a href="/">Back to Form</a>');
-    
+    //  res.send("item saved to database. Check out the <a href='/api/users'>JSON FILE</a> "+ '<a href="/">Back to Form</a>');
+    const posts = await User.find();
+    //  res.json(posts);
+    const apiHTML = posts.reduce((acc, { firstName, lastName, fruit }) => acc += `
+    <div class="record">
+    <p class="fullName">Name: <span class="firstName">${firstName}</span> <span class="lastName">${lastName}</span></p>
+    <p class="fruit">Fruit: ${fruit}</p>
+    </div>`, '');
+    res.send(`
+    <html>
+      <head>
+        <title>Saved API Data</title>
+        <link href="/css/styles.css" rel="stylesheet">
+        <link rel="stylesheet"  href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+      </head>
+      <h1 style="text-align: center; margin-top: 10px;">Saved API DATA</h1>
+    <div class="records">  ${apiHTML} </div>
+    <br><center><a class="btn btn-secondary btn-lg" href="/">Back to Form</a></center><br>
+    </html>
+    `);
  } catch (err) {
      res.json({ message: err });
      res.status(400).send("unable to save to database");
@@ -64,9 +82,26 @@ app.get('/api/users', async (req, res) => {
     try{
      const posts = await User.find();
     //  res.json(posts);
-     res.send(` <h1 style="text-align: center;">Saved API DATA</h1> Array of Posts <br><br> ${posts}
-     <br><br><center><a href="/">Back to Form</a></center>
-     `);
+    const apiHTML = posts.reduce((acc, { firstName, lastName, fruit }) => acc += `
+    <div class="record">
+    <p class="fullName">Name: <span class="firstName">${firstName}</span> <span class="lastName">${lastName}</span></p>
+    <p class="fruit">Fruit: ${fruit}</p>
+    </div>`, '');
+    res.send(`
+    <html>
+      <head>
+        <title>Saved API Data</title>
+        <link href="/css/styles.css" rel="stylesheet">
+        <link rel="stylesheet"  href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+      </head>
+      <h1 style="text-align: center; margin-top: 10px;">Saved API DATA</h1>
+    <div class="records">  ${apiHTML} </div>
+    <br><center><a class="btn btn-secondary btn-lg" href="/">Back to Form</a></center><br>
+    </html>
+    `);
+    //  res.send(` <h1 style="text-align: center;">Saved API DATA</h1> Array of Posts <br><br> ${posts}
+    //  <br><br><center><a href="/">Back to Form</a></center>
+    //  `);    
     } catch (err) {
      res.json({ message: err });
      res.send(`error try again`);
@@ -95,5 +130,5 @@ process.env.DB_CONNECTION,
 
 
 app.listen(process.env.PORT || 8000, function(){
-    console.log('Your node js server is running');
+    console.log('Your node js server is running on port 8000');
 });

@@ -16,12 +16,12 @@ Full Stack App pushed to Heroku
     <center>
  <h1>Name Database</h1>
 <div class="form">
- <form method="post" action="/addname">
+ <form method="post" action="/api/users">
  <label>About Yourself</label><br>
- <input type="text"  name="firstName" placeholder="First name..." ><br><br>
- <input type="text"  name="lastName" placeholder="Last name..."><br><br>
+ <input type="text" class="name" name="firstName" placeholder="First name..." ><br><br>
+ <input type="text" class="name" name="lastName" placeholder="Last name..."><br><br>
  <label>Favorite Fruit?</label><br>
- <input type="text"  name="fruit" placeholder="Apple??"><br><br>
+ <input type="text" class="name" name="fruit" placeholder="Apple??"><br><br>
  <input class="btn btn-secondary btn-lg" type="submit" value="Submit">
  </form></div>
 
@@ -77,6 +77,10 @@ h1 {
     background-color: rgb(241, 241, 241);
 }
 
+form input.name {
+    border-radius: 3px;
+    text-align: center;
+}
 
 footer {
     background-color: #3F3F41;
@@ -91,11 +95,11 @@ footer p {
 }
 
 footer a {
-    color: white;
+    color: rgb(131, 131, 131);
 }
 
 footer a:hover {
-    color: darkgray;
+    color: rgb(163, 157, 157);
     text-decoration: none;
 }
 </style>

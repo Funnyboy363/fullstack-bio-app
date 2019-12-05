@@ -3,23 +3,27 @@
  <head>
  <title>JSON Text</title>
  </head>
- 
-
+ <body>
  </body>
 
     
     <script>
-    //Gets back all the posts
+   
+
+//Gets back all the posts
 app.get('/nextpage', async (req, res) => {
     try{
      const posts = await User.find();
-    //  res.json(posts);
-     res.send(`Here are the names ${posts}`);
+     res.json(posts);
+     res.json(JSON.stringify(posts, undefined, 4));
     } catch (err) {
      res.json({ message: err });
      res.send(`error try again`);
     }
   }); 
+
+  
+
     </script>
 
 
