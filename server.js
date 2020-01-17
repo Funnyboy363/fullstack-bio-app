@@ -121,14 +121,6 @@ process.env.DB_CONNECTION,
 );
 
 
-
-
-
-
-
-
-
-
 app.listen(process.env.PORT || 8000, function(){
     console.log('Your node js server is running on port 8000');
 });
